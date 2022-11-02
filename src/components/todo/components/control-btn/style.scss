@@ -1,0 +1,14 @@
+.controls__btn {
+  border-radius: 3px;
+  background-color: transparent;
+  color: #5f5b5b;
+  padding: 3px;
+}
+
+.controls__btn:not(:last-child) {
+  margin-right: 0.625em;
+}
+
+.controls__btn_active {
+  border: 1px solid #dfb5a7;
+}

@@ -1,0 +1,38 @@
+.todo__input {
+  width: 90%;
+  height: 2.5em;
+  font-size: 1.125em;
+  font-family: 'Roboto';
+  border: 0;
+  outline: 0;
+}
+
+.todo__input::placeholder {
+  color: #cec8c8;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.todo__input-label {
+  display: flex;
+  align-items: center;
+  opacity: 0.4;
+}
+
+.todo__input-label:focus-within {
+  opacity: 1;
+}
+
+.todo__input-label::before {
+  content: '';
+  width: 1.875em;
+  height: 1.875em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid #c4c4c4;
+  margin-right: 0.625em;
+  background: url('../../../../assets/icons/chevron.svg') 50% 50%;
+  background-size: cover;
+}

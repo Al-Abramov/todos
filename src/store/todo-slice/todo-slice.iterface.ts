@@ -4,7 +4,7 @@ export interface TodoState {
   completed: number;
 }
 
-interface Todo {
+export interface Todo {
   title: string;
   id: string;
   completed: boolean;

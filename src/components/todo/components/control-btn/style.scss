@@ -3,6 +3,7 @@
   background-color: transparent;
   color: #5f5b5b;
   padding: 3px;
+  transition: 0.3s;
 }
 
 .controls__btn:not(:last-child) {
@@ -11,4 +12,8 @@
 
 .controls__btn_active {
   border: 1px solid #dfb5a7;
+}
+
+.controls__btn:hover {
+  color: #1d1b1b;
 }

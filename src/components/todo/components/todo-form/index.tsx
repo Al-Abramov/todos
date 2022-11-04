@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
-import { AddTodoProps, Ref } from './add-todo.inteface';
+import { TodoFormProps, Ref } from './todo-form.inteface';
 import './style.scss';
 
-const AddTodo = forwardRef<Ref, AddTodoProps>((props, ref) => {
+const TodoForm = forwardRef<Ref, TodoFormProps>((props, ref) => {
   const addTodo = (e: React.FormEvent<HTMLFormElement>) => {
     props.add(e);
   };
@@ -23,4 +23,4 @@ const AddTodo = forwardRef<Ref, AddTodoProps>((props, ref) => {
   );
 });
 
-export default React.memo(AddTodo);
+export default React.memo(TodoForm);

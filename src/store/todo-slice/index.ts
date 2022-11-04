@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FiltersProps, TodoState } from './todo-slice.iterface';
 
-const initialState: TodoState = {
+export const initialState: TodoState = {
   initialList: [],
   list: [],
   completed: 0,

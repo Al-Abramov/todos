@@ -1,4 +1,4 @@
-export interface AddTodoProps {
+export interface TodoFormProps {
   ref: React.RefObject<HTMLInputElement>;
   add: (e: React.FormEvent<HTMLFormElement>) => void;
 }

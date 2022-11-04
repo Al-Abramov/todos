@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react';
 import { useAppDispatch } from '../../../../store';
 import { addTodo } from '../../../../store/todo-slice';
 import LayoutFlex from '../../../layout-flex';
-import AddTodo from '../add-todo';
+import TodoForm from '../todo-form';
 import './style.scss';
 
 const TodoHeader = () => {
@@ -21,7 +21,7 @@ const TodoHeader = () => {
 
   return (
     <LayoutFlex flex={'start'} class={'todo__header'}>
-      <AddTodo ref={inputRef} add={add} />
+      <TodoForm ref={inputRef} add={add} />
     </LayoutFlex>
   );
 };

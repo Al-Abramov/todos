@@ -6,21 +6,12 @@ import ControlBtn from '../control-btn';
 import './tyle.scss';
 
 const Controls = () => {
-  const [buttons, setButtons] = useState(CONTROLS_BTNS);
+  const [buttons, setButtons] = useState<number>(CONTROLS_BTNS[0].id);
 
   const dispatch = useAppDispatch();
 
   const changeActiveBtn = (id: number) => {
-    const btns = buttons.map((btn) => {
-      if (btn.active) {
-        btn.active = false;
-      }
-      if (btn.id === id) {
-        btn.active = true;
-      }
-      return btn;
-    });
-    setButtons(btns);
+    setButtons(id);
   };
 
   const filtered = useCallback(
@@ -39,7 +30,7 @@ const Controls = () => {
           id={btn.id}
           name={btn.name}
           status={btn.name}
-          active={btn.active}
+          active={btn.id === buttons}
           callback={filtered}
         />
       ))}

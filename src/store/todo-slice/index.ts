@@ -44,7 +44,7 @@ const todoSlice = createSlice({
     },
     clearCompleted(state) {
       state.list = state.list.filter((todo) => !todo.completed);
-      state.initialList = state.list;
+      state.initialList = state.initialList.filter((todo) => !todo.completed);
     },
   },
 });

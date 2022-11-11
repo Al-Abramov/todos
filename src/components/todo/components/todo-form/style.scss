@@ -1,3 +1,5 @@
+@import  '../../../../scss/variables.scss';
+
 .todo__input-label {
   width: 100%;
 }
@@ -12,7 +14,7 @@
 }
 
 .todo__input::placeholder {
-  color: #cec8c8;
+  color: $grey-light;
   font-style: italic;
   font-weight: 100;
 }
@@ -35,7 +37,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid #c4c4c4;
+  border: 1px solid $grey-light;
   margin-right: 0.625em;
   background: url('../../../../assets/icons/chevron.svg') 50% 50%;
   background-size: cover;

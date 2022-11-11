@@ -1,3 +1,5 @@
+@import  '../../../../scss/variables.scss';
+
 .task {
   width: 100%;
   display: flex;
@@ -26,7 +28,7 @@
   width: 1.5625em;
   height: 1.5625em;
   border-radius: 50%;
-  border: 1px solid #c4c4c4;
+  border: 1px solid $grey-light;
 }
 
 .task__check-input:checked + .task__check-box {
@@ -39,7 +41,7 @@
   font-weight: 400;
   font-size: 1.125em;
   word-break: break-all;
-  color: rgba(0, 0, 0, 0.75);
+  color: $description;
   margin-left: 0.625em;
 }
 

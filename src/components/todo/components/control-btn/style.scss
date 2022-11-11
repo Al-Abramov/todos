@@ -1,7 +1,9 @@
+@import '../../../../scss/variables.scss';
+
 .controls__btn {
   border-radius: 3px;
   background-color: transparent;
-  color: #5f5b5b;
+  color: $subtitle;
   padding: 3px;
   transition: 0.3s;
 }
@@ -11,9 +13,9 @@
 }
 
 .controls__btn_active {
-  border: 1px solid #dfb5a7;
+  border: 1px solid $main-title;
 }
 
 .controls__btn:hover {
-  color: #1d1b1b;
+  color: $subtitle-hover;
 }

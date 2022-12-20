@@ -1,0 +1,16 @@
+@import '../../../../../../scss/variables.scss';
+
+.task__title {
+  max-width: 90%;
+  font-weight: 400;
+  font-size: 1.125em;
+  word-break: break-all;
+  color: $description;
+  margin-left: 0.625em;
+  cursor: pointer;
+}
+
+.task__title_completed {
+  text-decoration: line-through;
+  opacity: 0.4;
+}

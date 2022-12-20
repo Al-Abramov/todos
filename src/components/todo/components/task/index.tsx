@@ -1,32 +1,33 @@
-import React, { forwardRef } from 'react';
+import React, { useCallback } from 'react';
+import Button from '../../../button';
+import LayoutFlex from '../../../layout-flex';
+import TaskTitleContainer from './components/title-container';
 import './style.scss';
-import { RefCompleted, TaskProps } from './task.interface';
+import { TaskProps } from './task.interface';
 
-const Task = forwardRef<RefCompleted, TaskProps>((props, ref) => {
-  const removeTask = () => {
+const Task: React.FC<TaskProps> = (props) => {
+  const remove = useCallback(() => {
     props.remove(props.id);
-  };
+  }, []);
 
-  const toggleCompleted = () => {
+  const toggleChek = useCallback(() => {
     props.toggle(props.id);
-  };
+  }, []);
 
   return (
-    <div className="task">
-      <label className="task__check">
-        <input
-          className="task__check-input"
-          ref={ref}
-          type="checkbox"
-          checked={props.completed}
-          onChange={toggleCompleted}
+    <LayoutFlex flex="between" class="task">
+      <LayoutFlex flex="between" class="task__container">
+        <TaskTitleContainer
+          id={props.id}
+          title={props.title}
+          completed={props.completed}
+          toggleChek={toggleChek}
+          ref={props.refCompleted}
         />
-        <span className="task__check-box"></span>
-        <span className="task__title">{props.title}</span>
-      </label>
-      <button className="task__delete" onClick={removeTask}></button>
-    </div>
+        <Button class="task__delete" onClick={remove} />
+      </LayoutFlex>
+    </LayoutFlex>
   );
-});
+};
 
 export default React.memo(Task);

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FiltersProps, TodoState } from './todo-slice.iterface';
+import { FiltersProps, Todo, TodoState } from './todo-slice.iterface';
 
 export const initialState: TodoState = {
   initialList: [],
@@ -28,6 +28,13 @@ const todoSlice = createSlice({
         state.initialList = state.list;
       }
     },
+    setTitle(state, action: PayloadAction<Todo>) {
+      const currentTodo = state.list.find((todo) => todo.id === action.payload.id);
+      if (currentTodo) {
+        currentTodo.title = action.payload.title;
+        state.initialList = state.list;
+      }
+    },
     removeTodo(state, action: PayloadAction<string>) {
       state.list = state.list.filter((todo) => todo.id != action.payload);
       state.completed = state.list.filter((todo) => !todo.completed).length;
@@ -49,7 +56,7 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, toggleCompleted, removeTodo, filteredTodo, clearCompleted } =
+export const { addTodo, toggleCompleted, removeTodo, filteredTodo, clearCompleted, setTitle } =
   todoSlice.actions;
 
 export default todoSlice.reducer;

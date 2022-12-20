@@ -9,9 +9,12 @@
   padding: 0.9375em 0.625em;
 }
 
-.task__check {
+.task__container {
   width: 100%;
-  display: flex;
+}
+
+.task__check {
+  display: inline-block;
   align-items: center;
   cursor: pointer;
 }
@@ -34,15 +37,6 @@
 .task__check-input:checked + .task__check-box {
   background-image: url('../../../../assets/icons/check.png');
   background-size: cover;
-}
-
-.task__title {
-  width: 90%;
-  font-weight: 400;
-  font-size: 1.125em;
-  word-break: break-all;
-  color: $description;
-  margin-left: 0.625em;
 }
 
 .task__check-input:checked ~ .task__title {

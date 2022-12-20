@@ -1,0 +1,26 @@
+@import '../../scss/variables.scss';
+
+.check {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.check-input {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.check-box {
+  width: 1.5625em;
+  height: 1.5625em;
+  border-radius: 50%;
+  border: 1px solid $grey-light;
+}
+
+.check-input:checked + .check-box {
+  background-image: url('../../assets/icons/check.png');
+  background-size: cover;
+}

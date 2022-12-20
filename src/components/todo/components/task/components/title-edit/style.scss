@@ -1,0 +1,41 @@
+.edit {
+  display: flex;
+  width: 90%;
+}
+
+.edit__input {
+  width: 25em;
+  max-width: 80%;
+  outline: none;
+  cursor: auto;
+  border: 1px solid #c4c4c4;
+}
+
+@media (max-width: 480px) {
+  .edit__input {
+    max-width: 65%;
+  }
+}
+
+.edit-btn-container{
+  margin-left: 5px;
+}
+
+.edit__btn {
+  display: inline-block;
+  width: 1.25em;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.edit__btn_close {
+  background-image: url('../../../../../../assets/icons/close.svg');
+  margin-right: 5px;
+}
+
+.edit__btn_apply {
+  background-image: url('../../../../../../assets/icons/check.png');
+}

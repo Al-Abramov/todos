@@ -6,23 +6,16 @@ import Task from '../task';
 
 const TaskContainer = () => {
   const completedRef = useRef(null);
-
-  const dispatch = useAppDispatch();
   const todos = useAppSelector((state) => state.todo.list);
+  const dispatch = useAppDispatch();
 
-  const remove = useCallback(
-    (id: string) => {
-      dispatch(removeTodo(id));
-    },
-    [dispatch]
-  );
+  const remove = useCallback((id: string) => {
+    dispatch(removeTodo(id));
+  }, []);
 
-  const toggle = useCallback(
-    (id: string) => {
-      dispatch(toggleCompleted(id));
-    },
-    [dispatch]
-  );
+  const toggle = useCallback((id: string) => {
+    dispatch(toggleCompleted(id));
+  }, []);
 
   return (
     <LayoutFlex flex={'start'} class={'column'}>
@@ -30,11 +23,11 @@ const TaskContainer = () => {
         <Task
           key={todo.id}
           id={todo.id}
-          ref={completedRef}
           title={todo.title}
           completed={todo.completed}
           remove={remove}
           toggle={toggle}
+          refCompleted={completedRef}
         />
       ))}
     </LayoutFlex>

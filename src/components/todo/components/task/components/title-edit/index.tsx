@@ -3,7 +3,7 @@ import './style.scss';
 import { FormEvent, forwardRef } from 'react';
 import { Ref } from '../../../todo-form/todo-form.inteface';
 
-const TitleEdit = forwardRef<Ref, TitleEditProps>(({ title, toggleEdit, applyTitle }, ref) => {
+const TitleEditForm = forwardRef<Ref, TitleEditProps>(({ title, toggleEdit, applyTitle }, ref) => {
   const applyHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     applyTitle();
@@ -20,4 +20,4 @@ const TitleEdit = forwardRef<Ref, TitleEditProps>(({ title, toggleEdit, applyTit
   );
 });
 
-export default TitleEdit;
+export default TitleEditForm;

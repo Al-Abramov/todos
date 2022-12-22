@@ -1,8 +1,8 @@
-import { FormEvent, useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useAppDispatch } from '../../../../../../store';
 import { setTitle } from '../../../../../../store/todo-slice';
 import TaskTitle from '../title';
-import TitleEdit from '../title-edit';
+import TitleEditForm from '../title-edit';
 import { TitleWrapperProps } from './titleWrapper.interface';
 
 const TitleWrapper: React.FC<TitleWrapperProps> = ({ id, completed, title }) => {
@@ -27,7 +27,7 @@ const TitleWrapper: React.FC<TitleWrapperProps> = ({ id, completed, title }) => 
   }, [edit, dispatch]);
 
   return edit ? (
-    <TitleEdit title={title} ref={titleRef} applyTitle={applyTitle} toggleEdit={toggleEdit} />
+    <TitleEditForm title={title} ref={titleRef} applyTitle={applyTitle} toggleEdit={toggleEdit} />
   ) : (
     <TaskTitle completed={completed} title={title} toggleEdit={toggleEdit} />
   );

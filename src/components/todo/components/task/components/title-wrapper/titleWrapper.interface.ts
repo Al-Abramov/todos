@@ -1,5 +1,5 @@
+import { Todo } from '../../../../../../store/todo-slice/todo-slice.iterface';
+
 export interface TitleWrapperProps {
-  id: string;
-  completed: boolean;
-  title: string;
+  info: Todo;
 }

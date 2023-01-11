@@ -42,3 +42,25 @@
   background: url('../../../../assets/icons/add.png') 50% 50% no-repeat;
   background-size: 70%;
 }
+
+.todo__form_task {
+
+  &.todo__form {
+    width: 99%;
+    margin-top: 10px;
+  }
+
+  & .todo__add {
+    width: 1em;
+    height: 1em;
+  }
+
+  & .todo__input-label {
+    width: 90%;
+  }
+
+  & .todo__input {
+    height: 1.1em;
+    font-size: 1em;
+  }
+}

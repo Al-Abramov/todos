@@ -9,8 +9,8 @@ import TitleWrapper from '../title-wrapper';
 const TaskTitleContainer = forwardRef<RefCheckBox, TaskTitleContainerProps>((props, ref) => {
   return (
     <LayoutFlex flex="start" class="task__title-container">
-      <CheckBox ref={ref} toggle={props.toggleChek} checked={props.completed} />
-      <TitleWrapper id={props.id} completed={props.completed} title={props.title} />
+      <CheckBox ref={ref} toggle={props.toggleChek} checked={props.info.completed} />
+      <TitleWrapper info={props.info} />
     </LayoutFlex>
   );
 });

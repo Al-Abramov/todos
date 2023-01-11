@@ -9,19 +9,15 @@ const TodoHeader = () => {
   const inputRef: React.RefObject<HTMLInputElement> = useRef(null);
   const dispatch = useAppDispatch();
 
-  const add = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if (!inputRef.current?.value.trim()) return;
-      dispatch(addTodo(inputRef.current.value));
-      inputRef.current.value = '';
-    },
-    [dispatch]
-  );
+  const add = useCallback(() => {
+    if (!inputRef.current?.value.trim()) return;
+    dispatch(addTodo(inputRef.current.value));
+    inputRef.current.value = '';
+  }, [dispatch]);
 
   return (
     <LayoutFlex flex={'start'} class={'todo__header'}>
-      <TodoForm ref={inputRef} add={add} />
+      <TodoForm class="" ref={inputRef} add={add} />
     </LayoutFlex>
   );
 };

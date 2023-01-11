@@ -5,7 +5,7 @@ import TaskTitle from '../title';
 import TitleEditForm from '../title-edit';
 import { TitleWrapperProps } from './titleWrapper.interface';
 
-const TitleWrapper: React.FC<TitleWrapperProps> = ({ id, completed, title }) => {
+const TitleWrapper: React.FC<TitleWrapperProps> = ({ info }) => {
   const [edit, setEdit] = useState(false);
   const titleRef: React.RefObject<HTMLInputElement> = useRef(null);
   const dispatch = useAppDispatch();
@@ -18,18 +18,24 @@ const TitleWrapper: React.FC<TitleWrapperProps> = ({ id, completed, title }) => 
     if (!titleRef.current?.value.trim()) return;
     dispatch(
       setTitle({
-        id,
+        id: info.id,
         title: titleRef.current?.value,
-        completed,
+        completed: info.completed,
+        children: info.children,
       })
     );
     setEdit(!edit);
   }, [edit, dispatch]);
 
   return edit ? (
-    <TitleEditForm title={title} ref={titleRef} applyTitle={applyTitle} toggleEdit={toggleEdit} />
+    <TitleEditForm
+      title={info.title}
+      ref={titleRef}
+      applyTitle={applyTitle}
+      toggleEdit={toggleEdit}
+    />
   ) : (
-    <TaskTitle completed={completed} title={title} toggleEdit={toggleEdit} />
+    <TaskTitle completed={info.completed} title={info.title} toggleEdit={toggleEdit} />
   );
 };
 

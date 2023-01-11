@@ -4,11 +4,12 @@ import './style.scss';
 
 const TodoForm = forwardRef<Ref, TodoFormProps>((props, ref) => {
   const addTodo = (e: React.FormEvent<HTMLFormElement>) => {
-    props.add(e);
+    e.preventDefault();
+    props.add();
   };
 
   return (
-    <form className="todo__form" action="" onSubmit={addTodo}>
+    <form className={`todo__form ${props.class}`} action="" onSubmit={addTodo}>
       <button className="todo__add"></button>
       <label className="todo__input-label" htmlFor="">
         <input
@@ -22,5 +23,9 @@ const TodoForm = forwardRef<Ref, TodoFormProps>((props, ref) => {
     </form>
   );
 });
+
+TodoForm.defaultProps = {
+  class: '',
+};
 
 export default React.memo(TodoForm);

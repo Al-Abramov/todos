@@ -1,6 +1,6 @@
 export interface TodoState {
-  initialList: Todo[];
-  list: Todo[];
+  initialList: TodoStateList;
+  list: TodoStateList;
   completed: number;
 }
 
@@ -8,11 +8,22 @@ export interface Todo {
   title: string;
   id: string;
   completed: boolean;
+  children: string[];
+  parent?: string;
 }
 
 export interface FiltersProps {
-  [key: string]: () => Todo[];
-  all: () => Todo[];
-  active: () => Todo[];
-  completed: () => Todo[];
+  [key: string]: () => TodoStateList;
+  all: () => TodoStateList;
+  active: () => TodoStateList;
+  completed: () => TodoStateList;
+}
+
+export interface TodoStateList {
+  [key: string]: Todo;
+}
+
+export interface addNestedTodoProps {
+  id: string;
+  title: string;
 }

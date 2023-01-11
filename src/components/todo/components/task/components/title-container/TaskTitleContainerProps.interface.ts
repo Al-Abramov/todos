@@ -1,9 +1,8 @@
 import React from 'react';
+import { Todo } from '../../../../../../store/todo-slice/todo-slice.iterface';
 
 export interface TaskTitleContainerProps {
-  id: string;
-  completed: boolean;
-  title: string;
+  info: Todo;
   ref: React.RefObject<HTMLInputElement>;
   toggleChek: () => void;
 }

@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { CONTROLS_BTNS } from '../../../../constants/control-btns';
+import { filters } from '../../../../helpers';
 import { useAppDispatch } from '../../../../store';
-import { filteredTodo } from '../../../../store/todo-slice';
+import { filteredTodo, setFilter } from '../../../../store/todo-slice';
 import ControlBtn from '../control-btn';
 import './tyle.scss';
 
@@ -16,8 +17,9 @@ const Controls = () => {
 
   const filtered = useCallback(
     (status: string, id: number) => {
-      dispatch(filteredTodo(status));
+      // dispatch(filteredTodo(status));
       changeActiveBtn(id);
+      dispatch(setFilter(status));
     },
     [dispatch]
   );

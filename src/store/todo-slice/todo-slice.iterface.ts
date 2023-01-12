@@ -2,6 +2,7 @@ export interface TodoState {
   initialList: TodoStateList;
   list: TodoStateList;
   completed: number;
+  filter: string;
 }
 
 export interface Todo {

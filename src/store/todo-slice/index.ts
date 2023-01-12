@@ -60,6 +60,7 @@ export const initialState: TodoState = {
     },
   },
   completed: 4,
+  filter: 'all',
 };
 
 const todoSlice = createSlice({
@@ -104,6 +105,13 @@ const todoSlice = createSlice({
       state.initialList = { ...state.list };
     },
     removeTodo(state, action: PayloadAction<string>) {
+      if (state.list[action.payload].parent) {
+        const parentId = state.list[action.payload].parent as string;
+        state.list[parentId].children = state.list[parentId].children.filter(
+          (id) => id !== action.payload
+        );
+      }
+
       delete state.list[action.payload];
       state.completed = Object.values(state.list).filter((todo) => !todo.completed).length;
       state.initialList = { ...state.list };
@@ -156,6 +164,9 @@ const todoSlice = createSlice({
         }
       }
     },
+    setFilter(state, action: PayloadAction<string>) {
+      state.filter = action.payload;
+    },
   },
 });
 
@@ -167,6 +178,7 @@ export const {
   filteredTodo,
   clearCompleted,
   setTitle,
+  setFilter,
 } = todoSlice.actions;
 
 export default todoSlice.reducer;

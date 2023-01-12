@@ -1,7 +1,9 @@
 import React, { useCallback, useRef } from 'react';
+import { filters, filtersList } from '../../../../helpers';
+import { FiltersInterface } from '../../../../helpers/helpers.interfaces';
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { addTodo, removeTodo, toggleCompleted } from '../../../../store/todo-slice';
-import { Todo } from '../../../../store/todo-slice/todo-slice.iterface';
+import { Todo, TodoStateList } from '../../../../store/todo-slice/todo-slice.iterface';
 import LayoutFlex from '../../../layout-flex';
 import Task from '../task';
 import InnerContainer from '../task/components/inner-container';
@@ -11,6 +13,7 @@ const TaskContainer = () => {
   // const completedRef = useRef(null);
   // const addRef: React.RefObject<HTMLInputElement> = useRef(null);
   const todos = useAppSelector((state) => state.todo.list);
+  const filter = useAppSelector((state) => state.todo.filter);
   // const dispatch = useAppDispatch();
 
   // const remove = useCallback((id: string) => {
@@ -27,6 +30,10 @@ const TaskContainer = () => {
   //   addRef.current.value = '';*/
   //   console.log('add task');
   // }, []);
+  const getTodos = (todos: TodoStateList) => {
+    const data = Object.values(todos);
+    return filtersList[filter](data);
+  };
 
   return (
     <LayoutFlex flex={'start'} class={'TaskContainer column'}>

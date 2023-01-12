@@ -30,14 +30,14 @@ const TaskContainer = () => {
   //   addRef.current.value = '';*/
   //   console.log('add task');
   // }, []);
-  const getTodos = (todos: TodoStateList) => {
+  const filterTodos = (todos: TodoStateList) => {
     const data = Object.values(todos);
     return filtersList[filter](data);
   };
 
   return (
     <LayoutFlex flex={'start'} class={'TaskContainer column'}>
-      {Object.values(todos).map((todo) => (
+      {filterTodos(todos).map((todo) => (
         <LayoutFlex flex={'start'} class={'column'} key={todo.id}>
           {!todo.parent && (
             <>
@@ -49,7 +49,7 @@ const TaskContainer = () => {
                 // refCompleted={completedRef}
                 // addRef={addRef}
               />
-              <InnerContainer list={todos} tasks={todo.children} />
+              <InnerContainer list={todos} tasks={todo.children} filter={filter} />
             </>
           )}
         </LayoutFlex>

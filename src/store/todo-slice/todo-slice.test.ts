@@ -13,6 +13,7 @@ describe('todoSlice', () => {
     initialList: {},
     list: {},
     completed: 0,
+    filter: 'all',
   };
 
   test('should add todo', () => {
@@ -43,6 +44,7 @@ describe('todoSlice', () => {
       initialList: {},
       list: {},
       completed: 0,
+      filter: 'all',
     };
 
     const todo1 = { id: '123', title: 'Test all', completed: false, children: [] };

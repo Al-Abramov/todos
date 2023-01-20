@@ -1,5 +1,5 @@
 import { Todo } from '../store/todo-slice/todo-slice.iterface';
-import { FiltersInterface } from './helpers.interfaces';
+import { FiltersInterface, IfiltersList } from './helpers.interfaces';
 
 export const filters: FiltersInterface = {
   initialData: [],
@@ -23,10 +23,6 @@ export const filters: FiltersInterface = {
     return this;
   },
 };
-
-interface IfiltersList {
-  [key: string]: (data: Todo[]) => Todo[];
-}
 
 export const filtersList: IfiltersList = {
   all: (data: Todo[]) => {

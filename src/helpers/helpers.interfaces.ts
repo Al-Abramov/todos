@@ -8,3 +8,7 @@ export interface FiltersInterface {
   active: () => FiltersInterface;
   completed: () => FiltersInterface;
 }
+
+export interface IfiltersList {
+  [key: string]: (data: Todo[]) => Todo[];
+}

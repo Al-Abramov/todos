@@ -154,7 +154,7 @@ const todoSlice = createSlice({
             delete state.list[id];
           });
 
-          if (parentId) {
+          if (parentId && state.list[parentId]) {
             state.list[parentId].children = state.list[parentId].children.filter(
               (id) => id !== state.list[todo].id
             );

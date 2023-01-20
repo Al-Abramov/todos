@@ -1,6 +1,6 @@
+import React from 'react';
 import Task from '../..';
 import { filtersList } from '../../../../../../helpers';
-import { Todo } from '../../../../../../store/todo-slice/todo-slice.iterface';
 import LayoutFlex from '../../../../../layout-flex';
 import { InnerContainerProps } from './inner-container.interface';
 import './style.scss';
@@ -23,4 +23,4 @@ const InnerContainer: React.FC<InnerContainerProps> = ({ tasks, list, filter }) 
   );
 };
 
-export default InnerContainer;
+export default React.memo(InnerContainer);

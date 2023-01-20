@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { toggleChildCompleted } from '../helpers';
-import { addNestedTodoProps, FiltersProps, Todo, TodoState } from './todo-slice.iterface';
+import { addNestedTodoProps, Todo, TodoState } from './todo-slice.iterface';
 
 export const initialState: TodoState = {
   initialList: {
@@ -88,6 +88,7 @@ const todoSlice = createSlice({
         children: [],
       };
       state.list[action.payload.id].children.push(id);
+      state.completed = Object.values(state.list).filter((todo) => !todo.completed).length;
     },
     toggleCompleted(state, action: PayloadAction<string>) {
       const currentTodo = state.list[action.payload];
@@ -116,36 +117,7 @@ const todoSlice = createSlice({
       state.completed = Object.values(state.list).filter((todo) => !todo.completed).length;
       state.initialList = { ...state.list };
     },
-    filteredTodo(state, action: PayloadAction<string>) {
-      /*const filters: FiltersProps = {
-        all: () => state.list,
-        active: () => {
-          for (const todo in state.list) {
-            if (state.list[todo].completed) {
-              if (state.list[todo].parent) {
-                const parentId = state.list[todo].parent as string;
-                const childID = state.list[todo].id as string;
-                state.list[parentId].children = state.list[parentId].children.filter(
-                  (id) => id !== childID
-                );
-              }
-              delete state.list[todo];
-            }
-          }
-          return state.list;
-        },
-        completed: () => {
-          for (const todo in state.list) {
-            if (!state.list[todo].completed) {
-              delete state.list[todo];
-            }
-          }
-          return state.list;
-        },
-      };
-      state.list = { ...state.initialList };
-      state.list = filters[action.payload]();*/
-    },
+    filteredTodo(state, action: PayloadAction<string>) {},
     clearCompleted(state) {
       for (const todo in state.list) {
         if (state.list[todo].completed) {

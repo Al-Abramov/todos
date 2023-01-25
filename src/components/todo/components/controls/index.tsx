@@ -1,13 +1,15 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { CONTROLS_BTNS } from '../../../../constants/control-btns';
 import { useAppDispatch } from '../../../../store';
 import { setFilter } from '../../../../store/todo-slice';
 import ControlBtn from '../control-btn';
+import { useSearchParams } from 'react-router-dom';
 import './tyle.scss';
 
 const Controls = () => {
   const [buttons, setButtons] = useState<number>(CONTROLS_BTNS[0].id);
   const dispatch = useAppDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const changeActiveBtn = (id: number) => {
     setButtons(id);
@@ -16,10 +18,15 @@ const Controls = () => {
   const filtered = useCallback(
     (status: string, id: number) => {
       changeActiveBtn(id);
-      dispatch(setFilter(status));
+      setSearchParams({ filter: status });
+      //dispatch(setFilter(status));
     },
     [dispatch]
   );
+
+  useEffect(() => {
+    setSearchParams({ filter: 'all' });
+  }, []);
 
   return (
     <div className="controls">

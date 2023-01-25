@@ -23,4 +23,4 @@ const InnerContainer: React.FC<InnerContainerProps> = ({ tasks, list, filter }) 
   );
 };
 
-export default React.memo(InnerContainer);
+export default InnerContainer;

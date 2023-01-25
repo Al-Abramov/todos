@@ -7,6 +7,7 @@ import { Todo, TodoStateList } from '../../../../store/todo-slice/todo-slice.ite
 import LayoutFlex from '../../../layout-flex';
 import Task from '../task';
 import InnerContainer from '../task/components/inner-container';
+import { useSearchParams } from 'react-router-dom';
 import './style.scss';
 
 const TaskContainer = () => {
@@ -14,6 +15,7 @@ const TaskContainer = () => {
   // const addRef: React.RefObject<HTMLInputElement> = useRef(null);
   const todos = useAppSelector((state) => state.todo.list);
   const filter = useAppSelector((state) => state.todo.filter);
+  const [searchParams] = useSearchParams();
   // const dispatch = useAppDispatch();
 
   // const remove = useCallback((id: string) => {
@@ -31,8 +33,11 @@ const TaskContainer = () => {
   //   console.log('add task');
   // }, []);
   const filterTodos = (todos: TodoStateList) => {
+    const filter = searchParams.get('filter') as string;
     const data = Object.values(todos);
-    return filtersList[filter](data);
+    const a = filtersList[filter](data);
+    //console.log(a);
+    return a;
   };
 
   return (

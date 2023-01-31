@@ -24,10 +24,6 @@ const Controls = () => {
     [dispatch]
   );
 
-  useEffect(() => {
-    setSearchParams({ filter: 'all' });
-  }, []);
-
   return (
     <div className="controls">
       {CONTROLS_BTNS.map((btn) => (

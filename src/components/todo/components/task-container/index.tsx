@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { filters, filtersList } from '../../../../helpers';
 import { FiltersInterface } from '../../../../helpers/helpers.interfaces';
 import { useAppDispatch, useAppSelector } from '../../../../store';
@@ -9,14 +9,15 @@ import Task from '../task';
 import InnerContainer from '../task/components/inner-container';
 import { useSearchParams } from 'react-router-dom';
 import './style.scss';
+import { FILTERS } from '../../../../constants/filters-list';
 
 const TaskContainer = () => {
   // const completedRef = useRef(null);
   // const addRef: React.RefObject<HTMLInputElement> = useRef(null);
   const todos = useAppSelector((state) => state.todo.list);
   //const filter = useAppSelector((state) => state.todo.filter);
-  const [searchParams] = useSearchParams();
-  const filter = searchParams.get('filter') || '';
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filter = searchParams.get('filter') || FILTERS.all;
 
   //const dispatch = useAppDispatch();
 
@@ -38,6 +39,10 @@ const TaskContainer = () => {
     const data = Object.values(todos);
     return filtersList[filter](data);
   };
+
+  useEffect(() => {
+    setSearchParams({ filter: FILTERS.all });
+  }, []);
 
   return (
     <LayoutFlex flex={'start'} class={'TaskContainer column'}>

@@ -14,9 +14,11 @@ const TaskContainer = () => {
   // const completedRef = useRef(null);
   // const addRef: React.RefObject<HTMLInputElement> = useRef(null);
   const todos = useAppSelector((state) => state.todo.list);
-  const filter = useAppSelector((state) => state.todo.filter);
+  //const filter = useAppSelector((state) => state.todo.filter);
   const [searchParams] = useSearchParams();
-  // const dispatch = useAppDispatch();
+  const filter = searchParams.get('filter') || '';
+
+  //const dispatch = useAppDispatch();
 
   // const remove = useCallback((id: string) => {
   //   dispatch(removeTodo(id));
@@ -33,11 +35,8 @@ const TaskContainer = () => {
   //   console.log('add task');
   // }, []);
   const filterTodos = (todos: TodoStateList) => {
-    const filter = searchParams.get('filter') as string;
     const data = Object.values(todos);
-    const a = filtersList[filter](data);
-    //console.log(a);
-    return a;
+    return filtersList[filter](data);
   };
 
   return (

@@ -46,10 +46,10 @@ const TaskContainer = () => {
 
   return (
     <LayoutFlex flex={'start'} class={'TaskContainer column'}>
-      {filterTodos(todos).map((todo) => (
-        <LayoutFlex flex={'start'} class={'column'} key={todo.id}>
-          {!todo.parent && (
-            <>
+      {filterTodos(todos).map(
+        (todo) =>
+          !todo.parent && (
+            <LayoutFlex flex={'start'} class={'column ЖОПА'} key={todo.id}>
               <Task
                 info={todo}
                 // remove={remove}
@@ -59,10 +59,9 @@ const TaskContainer = () => {
                 // addRef={addRef}
               />
               <InnerContainer list={todos} tasks={todo.children} filter={filter} />
-            </>
-          )}
-        </LayoutFlex>
-      ))}
+            </LayoutFlex>
+          )
+      )}
     </LayoutFlex>
   );
 };

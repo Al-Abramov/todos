@@ -10,7 +10,7 @@ const InnerContainer: React.FC<InnerContainerProps> = ({ tasks, list, filter }) 
     const data = tasks.map((id) => list[id]);
     return filtersList[filter](data);
   };
-
+  //console.log(filterTasks(tasks).map((task) => task.id));
   return (
     <div className="children-container">
       {filterTasks(tasks).map((task) => (
